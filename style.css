@@ -1,0 +1,127 @@
+/*image display*/
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin:0;
+    padding:0;
+}
+
+.gallery{
+    width:80%;
+    height: 80vh;
+    margin: 10vh auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas: 'img-1 img-1 img-2'
+                         'img-1 img-1 img-3'
+                         'img-1 img-1 img-4';
+    grid-gap: 3px;
+}
+
+.img-container{
+    overflow:hidden;
+}
+
+.img-container img{
+    max-width: 100%;
+    filter:grayscale(100%);
+    transition: filter 0.7s, max-width 0.5s;
+    
+}
+
+.img-container img:hover{
+    filter:grayscale(0%);
+    cursor: pointer;
+    max-width:105%;
+}
+
+.img-1{
+    grid-area:img-1;
+}
+
+.img-2{
+    grid-area:img-2;
+}
+
+.img-3{
+    grid-area:img-3;
+}
+
+.img-4{
+    grid-area:img-4;
+}
+
+/*light box*/
+
+.lightbox{
+    display: none;
+    width:100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    position: fixed;
+    top:0;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox .fa-times{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+.photo{
+    width: 650px;
+    height: 650px;
+    background-color: black;
+    display: flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+    border-style:solid;
+    border-color:seashell;
+    border-width: 8px 8px 110px 8px;
+    border-radius:5px;
+}
+
+.photo .arrow-btn{
+    border:none;
+    width:50px;
+    height:50px;
+    border-radius: 30px;
+    margin:-70px;
+    cursor: pointer;
+}
+
+.photo .arrow-btn i{
+font-size: 30px;
+}
+
+@media(max-width: 1100px){
+    .gallery{
+        display:none;
+    }
+
+    .lightbox{
+        display: flex;
+        width:100%;
+        height: 100vh;
+        z-index: 1000;
+        position: fixed;
+        top:0;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .lightbox .fa-times{
+        display: none;
+    }
+}
